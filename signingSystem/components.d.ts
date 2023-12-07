@@ -12,7 +12,6 @@ declare module 'vue' {
     ElFooter: typeof import('element-plus/es')['ElFooter']
     ElHeader: typeof import('element-plus/es')['ElHeader']
     ElMain: typeof import('element-plus/es')['ElMain']
-    IdDialog: typeof import('./src/components/IdDialog.vue')['default']
     QRCode: typeof import('./src/components/QRCode.vue')['default']
     RouterLink: typeof import('vue-router')['RouterLink']
     RouterView: typeof import('vue-router')['RouterView']
