@@ -4,7 +4,8 @@ import { useRouter } from 'vue-router';
 let router = useRouter()
 const path = ref<string>();
 const headText = ref<string>('签到发起');
-const Ifback=ref<boolean>(false);
+const IfBack=ref<boolean>(false);
+const IfPlus=ref<boolean>(true);
 //监听当前路由以显示不同的标题
 watch(
     () => router,
@@ -12,7 +13,8 @@ watch(
         path.value = newPath.currentRoute.value.fullPath.substring(1)
         if (path.value === "qrcode") {
             headText.value = '二维码签到'
-            Ifback.value=true
+            IfBack.value=true
+            IfPlus.value=false
         }
         if(path.value==="user"){
             headText.value='个人'
@@ -35,11 +37,11 @@ const addSign=()=>{
 </script>
 <template>
     <div class="head-bg position-relative text-center">
-        <div class="position-absolute left-6 top-3 w-8 color-white" @click="back" v-if="Ifback">
+        <div class="position-absolute left-6 top-3 w-8 color-white" @click="back" v-if="IfBack">
             <ArrowLeft />
         </div>
         <span class="color-white font-size-5 line-height-14">{{ headText }}</span>
-        <div class="position-absolute right-6 top-3 w-8 color-white" @click="addSign">
+        <div class="position-absolute right-6 top-3 w-8 color-white" @click="addSign" v-if="IfPlus">
             <Plus />
         </div>
     </div>

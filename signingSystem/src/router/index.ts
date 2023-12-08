@@ -1,27 +1,20 @@
 import { createRouter, createWebHashHistory } from 'vue-router'
 
 const routes = [
-    {
+    {   
         path: '/main',
-        component: () => import('../layouts/Default.vue'),
-        children:[
-            {
-                path: '/main',
-                name:'main',
-                component: ()=>import('../views/Main.vue')
-            },
-            {
-                path: '/qrcode',
-                name:'qrcode',
-                component: ()=>import('../views/SignQRCode.vue')
-            },
-            {
-                path: '/user',
-                name:'user',
-                component: ()=>import('../views/User.vue')
-            },
-        ],
-    }
+        component: () => import('../views/Main.vue'),
+    },
+    {
+        path: '/user',
+        name:'user',
+        component: ()=>import('../views/User.vue')
+    },
+    {
+        path: '/qrcode',
+        name:'qrcode',
+        component: ()=>import('../views/SignQRCode.vue')
+    },
 ]
 
 
