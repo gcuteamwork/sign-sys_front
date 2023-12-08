@@ -1,4 +1,7 @@
 <script setup lang="ts">
+
 </script>
-<template>foot</template>
+<template>
+    main
+</template>
 <style scoped></style>
