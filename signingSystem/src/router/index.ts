@@ -14,7 +14,12 @@ const routes = [
                 path: '/qrcode',
                 name:'qrcode',
                 component: ()=>import('../views/SignQRCode.vue')
-            }
+            },
+            {
+                path: '/user',
+                name:'user',
+                component: ()=>import('../views/User.vue')
+            },
         ],
     }
 ]
