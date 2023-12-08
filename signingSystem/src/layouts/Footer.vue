@@ -30,7 +30,7 @@ const toUser=()=>{
 }
 </script>
 <template>
-    <div class="footer-bg h-16 border-rd-2 flex justify-around flex-items-center">
+    <div class="footer-bg h-15 border-rd-2 flex justify-around flex-items-center ">
         <div class="
         color-white 
         flex 

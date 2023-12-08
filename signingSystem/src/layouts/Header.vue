@@ -24,7 +24,7 @@ watch(
 
 //返回首页
 const back = () => {
-    router.go(-1)
+    router.push({path:'/main'})
 } 
 
 
@@ -34,12 +34,12 @@ const addSign=()=>{
 }
 </script>
 <template>
-    <div class="text-center head-bg">
-        <div class="position-fixed left-6 top-3 w-8 color-white" @click="back" v-if="Ifback">
+    <div class="head-bg position-relative text-center">
+        <div class="position-absolute left-6 top-3 w-8 color-white" @click="back" v-if="Ifback">
             <ArrowLeft />
         </div>
         <span class="color-white font-size-5 line-height-14">{{ headText }}</span>
-        <div class="position-fixed right-6 top-3 w-8 color-white" @click="addSign">
+        <div class="position-absolute right-6 top-3 w-8 color-white" @click="addSign">
             <Plus />
         </div>
     </div>
