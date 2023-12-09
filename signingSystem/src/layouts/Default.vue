@@ -1,5 +1,5 @@
 <template>
-    <div class="common-layout">
+  <div class="common-layout">
     <el-container>
       <el-header><default-head /></el-header>
       <el-container>
@@ -11,11 +11,11 @@
       </el-container>
     </el-container>
   </div>
-  </template>
-  
-  <script lang="ts" setup>
-    import DefaultHead from './Header.vue'
-    import DefaultView from './View.vue'
-    import DefaultBar from './NavBar.vue'
-    import DefaultFoot from './Footer.vue'
-  </script>
+</template>
+
+<script lang="ts" setup>
+import DefaultHead from "./Header.vue";
+import DefaultView from "./View.vue";
+import DefaultBar from "./NavBar.vue";
+import DefaultFoot from "./Footer.vue";
+</script>
