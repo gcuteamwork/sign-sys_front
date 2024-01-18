@@ -19,12 +19,7 @@ const routes: RouteRecordRaw[] = [
         path: '/check',
         name:'check',
         component: ()=>import('../views/CheckSign.vue'),
-    },
-    {
-        path: '/addSign',
-        name:'add',
-        component: ()=>import('../views/AddSign.vue'),
-    },
+    }
 ]
 
 
