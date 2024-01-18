@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 import { createRouter, createWebHashHistory,RouteRecordRaw } from 'vue-router'
 
 const routes: RouteRecordRaw[] = [
@@ -19,6 +20,21 @@ const routes: RouteRecordRaw[] = [
         path: '/check',
         name:'check',
         component: ()=>import('../views/CheckSign.vue'),
+=======
+import { createRouter, createWebHashHistory } from 'vue-router'
+
+const routes = [
+    {
+        path: '/',
+        component: () => import('../layouts/Default.vue'),
+        children:[
+            {
+                path: '/sign',
+                name:'sign',
+                component: ()=>import('../views/Sign.vue')
+            }
+        ],
+>>>>>>> develop
     }
 ]
 
