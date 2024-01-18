@@ -7,7 +7,9 @@ export {}
 
 declare module 'vue' {
   export interface GlobalComponents {
+    AddCard: typeof import('./src/components/AddCard.vue')['default']
     AddSignMsg: typeof import('./src/components/AddSignMsg.vue')['default']
+    CheckCard: typeof import('./src/components/CheckCard.vue')['default']
     ElAside: typeof import('element-plus/es')['ElAside']
     ElButton: typeof import('element-plus/es')['ElButton']
     ElContainer: typeof import('element-plus/es')['ElContainer']
@@ -19,6 +21,7 @@ declare module 'vue' {
     QRCode: typeof import('./src/components/QRCode.vue')['default']
     RouterLink: typeof import('vue-router')['RouterLink']
     RouterView: typeof import('vue-router')['RouterView']
+    SignCard: typeof import('./src/components/SignCard.vue')['default']
     SignDialog: typeof import('./src/components/SignDialog.vue')['default']
   }
 }

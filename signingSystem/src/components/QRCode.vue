@@ -10,11 +10,11 @@ import { onMounted, ref } from "vue";
 //二维码存储内容
 const qrUrl = 'hello';
 // canvas width
-const width = 300
+const width = 200
 // canvas height
-const height = 300
+const height = 200
 // 二维码尺寸（正方形 长宽相同）
-const qrSize = 250
+const qrSize = 200
 // 二维码底部文字
 // const qrText = ref<string>('Hello World')
 //底部说明文字字号

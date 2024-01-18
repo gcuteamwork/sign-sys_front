@@ -1,19 +1,29 @@
-import { createRouter, createWebHashHistory } from 'vue-router'
+import { createRouter, createWebHashHistory,RouteRecordRaw } from 'vue-router'
 
-const routes = [
+const routes: RouteRecordRaw[] = [
+    {
+        path: "/", 
+        redirect: "/adminMain"
+    },
     {   
-        path: '/main',
-        component: () => import('../views/Main.vue'),
+        path: '/adminMain',
+        name:'admin',
+        component: () => import('../views/AdminMain.vue')
     },
     {
-        path: '/user',
-        name:'user',
-        component: ()=>import('../views/User.vue')
+        path: '/adminInfo',
+        name:'adminInfo',
+        component: ()=>import('../views/AdminInfo.vue')
     },
     {
-        path: '/qrcode',
-        name:'qrcode',
-        component: ()=>import('../views/SignQRCode.vue')
+        path: '/check',
+        name:'check',
+        component: ()=>import('../views/CheckSign.vue'),
+    },
+    {
+        path: '/addSign',
+        name:'add',
+        component: ()=>import('../views/AddSign.vue'),
     },
 ]
 

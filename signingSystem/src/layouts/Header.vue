@@ -3,7 +3,7 @@ import { ref, watch} from 'vue';
 import { useRouter } from 'vue-router';
 let router = useRouter()
 const path = ref<string>();
-const headText = ref<string>('签到发起');
+const headText = ref<string>();
 const IfBack=ref<boolean>(false);
 const IfPlus=ref<boolean>(true);
 //监听当前路由以显示不同的标题
@@ -11,13 +11,22 @@ watch(
     () => router,
     (newPath) => {
         path.value = newPath.currentRoute.value.fullPath.substring(1)
-        if (path.value === "qrcode") {
-            headText.value = '二维码签到'
+        if (path.value === "adminMain") {
+            headText.value = '签到发起'
+        }
+        if (path.value === "check") {
+            headText.value = '签到情况'
             IfBack.value=true
             IfPlus.value=false
         }
-        if(path.value==="user"){
-            headText.value='个人'
+        if (path.value === "addSign") {
+            headText.value = '编辑签到'
+            IfBack.value=true
+            IfPlus.value=false
+        }
+        if(path.value==="adminInfo"){
+            headText.value='管理员信息'
+            IfPlus.value=false
         }
     },
     { immediate: true }
@@ -30,9 +39,9 @@ const back = () => {
 } 
 
 
-//弹出对话框添加签到信息
+//添加签到信息
 const addSign=()=>{
-    alert('添加签到')
+    router.push({path:'/addsign'})
 }
 </script>
 <template>

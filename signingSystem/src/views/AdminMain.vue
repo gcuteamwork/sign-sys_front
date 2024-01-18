@@ -6,7 +6,7 @@
    <div class="common-layout">
       <el-container class="common-layout">
       <el-header style="padding: 0;"><default-head /></el-header>
-      <el-main>user</el-main>
+      <el-main>main</el-main>
       <el-footer style="position: fixed;bottom: 26px;width: 100%;"><default-foot /></el-footer>
     </el-container>
   </div>

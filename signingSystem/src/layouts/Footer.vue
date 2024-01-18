@@ -10,10 +10,10 @@ watch(
     () => router,
     (newPath) => {
         path.value = newPath.currentRoute.value.fullPath.substring(1)
-        if (path.value === "main") {
+        if (path.value === "adminMain") {
             isActiveSign.value=true
         }
-        if(path.value === 'user'){
+        if(path.value === 'adminInfo'){
             isActiveUser.value=true
         }
     },
@@ -22,11 +22,11 @@ watch(
 );
 //跳转签到发起页面
 const toMain=()=>{
-    router.push({path:'/main'})
+    router.push({path:'/adminMain'})
 }
 //跳转个人页面
 const toUser=()=>{
-    router.push({path:'/user'})
+    router.push({path:'/adminInfo'})
 }
 </script>
 <template>
