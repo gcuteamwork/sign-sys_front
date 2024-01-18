@@ -1,20 +1,20 @@
 <template>
+<div class="flex justify-center">
     <canvas id="canvas" ref="canvas" class="canvas" :width="width" :height="height"></canvas>
+</div>
 </template>
   
 <script setup lang="ts">
 import QRCode from "qrcode";
 import { onMounted, ref } from "vue";
-
-
 //二维码存储内容
 const qrUrl = 'hello';
 // canvas width
-const width = 400
+const width = 200
 // canvas height
-const height = 400
+const height = 200
 // 二维码尺寸（正方形 长宽相同）
-const qrSize = 360
+const qrSize = 200
 // 二维码底部文字
 // const qrText = ref<string>('Hello World')
 //底部说明文字字号
@@ -35,7 +35,7 @@ const handleQrcode = () => {
         width: qrSize,
         version: 7
     }).then((url: string) => {
-        // 画二维码里的logo// 在canvas里进行拼接
+        // 画二维码里的logo 在canvas里进行拼接
         const ctx = dom.getContext("2d") as CanvasRenderingContext2D;
         const image = new Image();
         image.src = url;
@@ -69,7 +69,8 @@ onMounted(() => {
 });
 </script>
   
-<style lang="scss" scoped></style>
+<style lang="scss" scoped>
+</style>
   
   
   
