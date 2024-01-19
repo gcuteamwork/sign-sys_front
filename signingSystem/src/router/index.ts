@@ -3,7 +3,7 @@ import { createRouter, createWebHashHistory, RouteRecordRaw } from 'vue-router'
 const routes: RouteRecordRaw[] = [
     {
         path: '/',
-        redirect: '/login'
+        redirect: '/adminMain'
     },
     {
         path: '/login',
@@ -25,11 +25,6 @@ const routes: RouteRecordRaw[] = [
         name: 'adminInfo',
         component: () => import('../views/AdminInfo.vue')
     },
-    {
-        path: '/check',
-        name: 'check',
-        component: () => import('../views/CheckSign.vue'),
-    }
 ]
 
 
