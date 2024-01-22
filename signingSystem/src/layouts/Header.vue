@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { ref, watch} from 'vue';
 import { useRouter } from 'vue-router';
-import sign from '../components/SignDialog.vue'
+import sign from '../components/EditSignDialog.vue'
 let router = useRouter()
 const path = ref<string>();
 const headText = ref<string>();
@@ -26,19 +26,19 @@ watch(
 
 
 //添加签到信息
-const isSignDialogOpen=ref<boolean>(false)
+const isEditSignDialogOpen=ref<boolean>(false)
 const openSignDialog=()=>{
-    isSignDialogOpen.value=true
+    isEditSignDialogOpen.value=true
 }
 </script>
 <template>
     <div class="head-bg position-relative text-center">
         <span class="color-white font-size-5 line-height-14">{{ headText }}</span>
         <div class="position-absolute right-6 top-3 w-8 color-white" @click="openSignDialog()">
-            <Plus />
+            <Plus v-if="IfPlus"/>
         </div>
     </div>
-    <sign :open="isSignDialogOpen" @close="isSignDialogOpen=false" mode="add"/>
+    <sign :open="isEditSignDialogOpen" @close="isEditSignDialogOpen=false" mode="add"/>
 </template>
 <style scoped>
 .head-bg {

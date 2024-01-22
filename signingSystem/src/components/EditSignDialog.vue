@@ -3,7 +3,7 @@ import { reactive, ref, watch } from 'vue'
 import { ElMessageBox, ElMessage } from 'element-plus'
 interface DialogProps {
     open: boolean
-    mode: 'add' | 'change'
+    mode: 'add' 
 }
 const props = defineProps<DialogProps>()
 const open = ref<boolean>(false)
@@ -35,20 +35,16 @@ const options = [
 ]
 const times=[
     {
-      value: "10",
-      label: "10分钟"
+      value: "5",
+      label: "5分钟"
+    },
+    {
+      value: "15",
+      label: "15分钟"
     },
     {
       value: "30",
       label: "30分钟"
-    },
-    {
-      value: "60",
-      label: "60分钟"
-    },
-    {
-      value: "90",
-      label: "90分钟"
     }
 ]
 const form = reactive({
@@ -96,7 +92,7 @@ const submitForm = () => {
 }
 </script>
 <template>
-    <el-dialog v-model="open" :before-close="handleClose" style="background-color: #f0f1f2;width: 285px;" custom-class="dialog-title">
+    <el-dialog v-model="open" :before-close="handleClose" style="background-color: #f0f1f2;width: 285px;" class="dialog-title">
         <template #header>
             <span class="el-dialog__title">
                 <p>编辑签到</p>

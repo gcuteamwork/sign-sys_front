@@ -3,33 +3,28 @@
     <canvas id="canvas" ref="canvas" class="canvas" :width="width" :height="height"></canvas>
 </div>
 </template>
-  
+
 <script setup lang="ts">
 import QRCode from "qrcode";
-import { onMounted, ref } from "vue";
-//二维码存储内容
-const qrUrl = 'hello';
-// canvas width
-const width = 200
-// canvas height
-const height = 200
-// 二维码尺寸（正方形 长宽相同）
-const qrSize = 200
-// 二维码底部文字
-// const qrText = ref<string>('Hello World')
-//底部说明文字字号
-// const qrTextSize = 24
+import { onMounted, ref, watch } from "vue";
 
-const canvas = ref<HTMLCanvasElement>();
+//二维码存储内容
+const qrUrl =ref('hello') ;
+// canvas width
+const width = 100
+// canvas height
+const height = 100
+// 二维码尺寸（正方形 长宽相同）
+const qrSize = 100
 /**
  * @argument qrUrl        二维码内容
  * @argument qrSize       二维码大小
- * @argument qrText       二维码中间显示文字
- * @argument qrTextSize   二维码中间显示文字大小(默认16px)
  */
+
+const canvas = ref<HTMLCanvasElement>();
 const handleQrcode = () => {
     let dom = canvas.value as HTMLCanvasElement;
-    QRCode.toDataURL(qrUrl
+    QRCode.toDataURL(qrUrl.value
     ,{
         errorCorrectionLevel: "H",
         width: qrSize,
@@ -45,28 +40,38 @@ const handleQrcode = () => {
             };
         }).then((img: HTMLImageElement) => {
             // console.log(img, ctx)
-            ctx.drawImage(img, (width - qrSize) / 2, 0, qrSize, qrSize);
-            // if (qrText) {
-            //     //设置字体
-            //     ctx.font = "bold " + qrTextSize + "px Arial";
-            //     let tw = ctx.measureText(qrText.value).width; // 文字真实宽度
-            //     let ftop = qrSize - qrTextSize; // 根据字体大小计算文字top
-            //     let fleft = (width - tw) / 2; // 根据字体大小计算文字left
-            //     ctx.fillStyle = "#fff";
-            //     ctx.textBaseline = "top"; //设置绘制文本时的文本基线。
-            //     ctx.fillStyle = "#333";
-            //     ctx.fillText(qrText.value, fleft, ftop);
-            // }
+            ctx?.drawImage(img, (width - qrSize) / 2, 0, qrSize, qrSize);
         });
     }).catch((err: Error) => {
         console.error(err);
     });
 };
 
-
 onMounted(() => {
     handleQrcode();
 });
+
+watch(
+    ()=>qrUrl.value,
+    (newValue)=>{
+        qrUrl.value=newValue
+        console.log(qrUrl.value);
+    }
+)
+let timer=ref()
+const start=()=>{
+    if(timer.value){
+       clearInterval(timer.value)
+    }else{
+       timer.value=setInterval(()=>{
+        //获取返回的数据,每次间隔10s刷新二维码
+        qrUrl.value='world'
+        handleQrcode()
+        },10000) 
+    }
+    
+}
+start()
 </script>
   
 <style lang="scss" scoped>
