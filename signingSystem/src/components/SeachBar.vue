@@ -3,7 +3,7 @@
         v-model="input"
         placeholder="搜索"
         class="search 
-        flex h-5dvh w-95% b-rd-6 m-a m-t-4 b-0
+        flex h-5dvh w-95% b-rd-6 m-a b-0
         text-center font-size-5
         "
       />

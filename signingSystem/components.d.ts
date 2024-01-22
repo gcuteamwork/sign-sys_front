@@ -7,10 +7,16 @@ export {}
 
 declare module 'vue' {
   export interface GlobalComponents {
+<<<<<<< HEAD
+=======
+    AddCard: typeof import('./src/components/AddCard.vue')['default']
+    CheckCard: typeof import('./src/components/CheckCard.vue')['default']
+>>>>>>> origin/Napstablook
     CountDown: typeof import('./src/components/CountDown.vue')['default']
     EditSignDialog: typeof import('./src/components/EditSignDialog.vue')['default']
     ElButton: typeof import('element-plus/es')['ElButton']
     ElContainer: typeof import('element-plus/es')['ElContainer']
+    ElContaner: typeof import('element-plus/es')['ElContaner']
     ElDialog: typeof import('element-plus/es')['ElDialog']
     ElDropdown: typeof import('element-plus/es')['ElDropdown']
     ElDropdownItem: typeof import('element-plus/es')['ElDropdownItem']

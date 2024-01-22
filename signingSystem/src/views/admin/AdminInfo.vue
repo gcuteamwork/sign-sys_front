@@ -43,47 +43,43 @@ const signout = () => {};
       <el-header style="padding: 0"><default-head /></el-header>
       <el-main>
         <!-- 信息 -->
-        <div class="block flex h-14dvh w-95% b-rd-3 m-a m-t-4 bg-white">
+        <div class="block flex h-12dvh w-95% b-rd-3 m-a m-t-4 bg-white">
           <div
-            class="ways h-115px w-115px m-3 b-rd-4 text-center font-size-8 text-white flex flex-justify-center flex-col"
+            class="ways h-75% m-3 b-rd-4 text-center font-size-5 text-white flex flex-justify-center flex-col"
           >
             {{ membername }}
           </div>
           <div class="flex flex-col flex-justify-center">
-            <div class="class text-size-6 fw-bold m-2">
+            <div class="class text-size-5 fw-bold m-1">
               姓名: {{ membername }}
             </div>
-            <div class="status text-size-4 fw-bold m-2">{{ identify }}</div>
+            <div class="status text-size-4 fw-bold m-1">{{ identify }}</div>
           </div>
         </div>
         <div class="block flex h-10dvh w-95% b-rd-3 m-a m-t-4 bg-white">
-          <div
-            class="icons h-75px w-75px m-3 b-rd-4 flex flex-justify-center flex-col"
-          >
-            <img class="w-70% m-a" src="../img/account.svg" alt="account" />
+          <div class="icons h-75% m-3 b-rd-4 flex flex-justify-center flex-col">
+            <img class="w-70% m-a" src="../../img/account.svg" alt="account" />
           </div>
           <div class="flex flex-col flex-justify-center">
-            <div class="class text-size-6 fw-bold m-2">账号: {{ account }}</div>
+            <div class="class text-size-5 fw-bold m-1">账号: {{ account }}</div>
           </div>
         </div>
         <div class="block flex h-10dvh w-95% b-rd-3 m-a m-t-4 bg-white">
-          <div
-            class="icons h-75px w-75px m-3 b-rd-4 flex flex-justify-center flex-col"
-          >
+          <div class="icons h-75% m-3 b-rd-4 flex flex-justify-center flex-col">
             <img
               class="w-70% m-a"
-              src="../img/department.svg"
+              src="../../img/department.svg"
               alt="appartment"
             />
           </div>
           <div class="flex flex-col flex-justify-center">
-            <div class="class text-size-6 fw-bold m-2">
+            <div class="class text-size-5 fw-bold m-1">
               所属部门: {{ appartment }}
             </div>
           </div>
         </div>
         <!-- 底部 关于我们 退出登录 -->
-        <div class="foot m-t-250px">
+        <div class="foot m-t-20dvh">
           <div class="about m-t-4">
             <el-button
               type="default"
@@ -115,7 +111,7 @@ const signout = () => {};
 </template>
 <style scoped>
 .btn {
-  height: 60px;
+  height: 6vh;
   margin: 0 auto;
   width: 95%;
   display: flex;
@@ -128,9 +124,11 @@ const signout = () => {};
 }
 .ways {
   background-color: #2967cc;
+  aspect-ratio: 1 / 1;
 }
 .icons {
   background-color: #2967cc;
+  aspect-ratio: 1 / 1;
 }
 .date {
   color: rgb(105, 105, 105);
