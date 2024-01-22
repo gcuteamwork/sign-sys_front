@@ -1,10 +1,10 @@
 <script setup lang="ts">
-import DefaultHead from '../layouts/Header.vue'
-import DefaultFoot from '../layouts/Footer.vue'
-import SignInItems from '../components/SignInItems.vue';
-import SeachBar from '../components/SeachBar.vue';
-import signInfo from '../components/SignInfoDialog.vue';
-import ScanQRcode from '../components/ScanQRcode.vue';
+import DefaultHead from '../../layouts/Header.vue'
+import DefaultFoot from '../../layouts/Footer.vue'
+import SignInItems from '../../components/SignInItems.vue';
+import SeachBar from '../../components/SeachBar.vue';
+import signInfo from '../../components/SignInfoDialog.vue';
+import ScanQRcode from '../../components/ScanQRcode.vue';
 import { ref, reactive } from 'vue';
 import { ElMessage } from 'element-plus'
 
