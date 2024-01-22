@@ -5,6 +5,7 @@ import 'uno.css'
 import ElementPlus from 'element-plus'
 import 'element-plus/dist/index.css'
 import * as ElementPlusIconsVue from '@element-plus/icons-vue'
+
 // Types
 import type { App } from 'vue'
 
