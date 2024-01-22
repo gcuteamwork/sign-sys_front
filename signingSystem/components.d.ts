@@ -7,11 +7,6 @@ export {}
 
 declare module 'vue' {
   export interface GlobalComponents {
-    AddCard: typeof import('./src/components/AddCard.vue')['default']
-    CheckCard: typeof import('./src/components/CheckCard.vue')['default']
-    ElAside: typeof import('element-plus/es')['ElAside']
-    CheckDialog: typeof import('./src/components/CheckDialog.vue')['default']
-    CheckSignDialog: typeof import('./src/components/CheckSignDialog.vue')['default']
     CountDown: typeof import('./src/components/CountDown.vue')['default']
     EditSignDialog: typeof import('./src/components/EditSignDialog.vue')['default']
     ElButton: typeof import('element-plus/es')['ElButton']
@@ -28,19 +23,15 @@ declare module 'vue' {
     ElInput: typeof import('element-plus/es')['ElInput']
     ElMain: typeof import('element-plus/es')['ElMain']
     ElOption: typeof import('element-plus/es')['ElOption']
-    ElRadio: typeof import('element-plus/es')['ElRadio']
     ElRadioButton: typeof import('element-plus/es')['ElRadioButton']
     ElRadioGroup: typeof import('element-plus/es')['ElRadioGroup']
     ElSelect: typeof import('element-plus/es')['ElSelect']
     QRCode: typeof import('./src/components/QRCode.vue')['default']
     RouterLink: typeof import('vue-router')['RouterLink']
     RouterView: typeof import('vue-router')['RouterView']
-    SeachBar: typeof import('./src/components/SeachBar.vue')['default']
-    SignInItems: typeof import('./src/components/SignInItems.vue')['default']
     ScanQRcode: typeof import('./src/components/ScanQRcode.vue')['default']
-    SignDialog: typeof import('./src/components/SignDialog.vue')['default']
+    SeachBar: typeof import('./src/components/SeachBar.vue')['default']
     SignInfoDialog: typeof import('./src/components/SignInfoDialog.vue')['default']
-    Test: typeof import('./src/components/test.vue')['default']
-    UseCountDown: typeof import('./src/components/UseCountDown.vue')['default']
+    SignInItems: typeof import('./src/components/SignInItems.vue')['default']
   }
 }
