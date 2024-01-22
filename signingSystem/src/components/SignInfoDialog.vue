@@ -68,7 +68,7 @@ const closeDialog = () => {
 }
 </script>
 <template>
-    <el-dialog v-model="open" :before-close="closeDialog" style="background-color: #f0f1f2;width: 285px;"
+    <el-dialog v-model="open" :before-close="closeDialog" style="background-color: #f0f1f2;width: 90%;height: 70%;"
         class="dialog-title">
         <template #header>
             <span class="el-dialog__title">
