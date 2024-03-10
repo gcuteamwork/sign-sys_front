@@ -7,6 +7,8 @@ import signInfo from "../../components/SignInfoDialog.vue";
 import ScanQRcode from "../../components/ScanQRcode.vue";
 import { ref, reactive } from "vue";
 import { ElMessage } from "element-plus";
+/* import { useRouter } from "vue-router";
+let router = useRouter(); */
 
 const isSignDialogOpen = ref<boolean>(false);
 const openSignDialog = () => {
@@ -51,6 +53,9 @@ const closeScan = () => {
   // 关闭按钮
   data.isQrCodeShown = false;
 };
+/* const toUser = () => {
+  router.push({ path: "/codesign" });
+}; */
 </script>
 <template>
   <div class="common-layout">
@@ -58,8 +63,10 @@ const closeScan = () => {
       <el-header style="padding: 0"><default-head /></el-header>
       <el-main>
         <seach-bar />
-        <sign-in-items />
-        <el-button @click="openSignDialog">main</el-button>
+        <sign-in-items @click="openSignDialog" />
+        <!-- @click="toUser" -->
+
+        <!-- <el-button @click="openSignDialog">main</el-button> -->
         <el-button @click="handleScan"
           ><el-icon><FullScreen /></el-icon
         ></el-button>
