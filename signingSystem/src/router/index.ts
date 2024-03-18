@@ -1,55 +1,74 @@
 import { createRouter, createWebHashHistory, RouteRecordRaw } from "vue-router";
 
-const routes: RouteRecordRaw[] = [
+
+export const staticRoutes: RouteRecordRaw[] = [
   {
     path: "/",
-    redirect: "/adminMain",
+    redirect: "/SignInInitiation",
   },
   {
     path: "/login",
     name: "login",
     component: () => import("../views/login.vue"),
+    meta:{
+      title:"登录"
+    }
   },
   {
     path: "/register",
     name: "register",
     component: () => import("../views/register.vue"),
+    meta:{
+      title:"注册"
+    }
   },
   {
-    path: "/adminMain",
-    name: "admin",
-    component: () => import("../views/admin/AdminMain.vue"),
+    path: "/SignInInitiation",
+    name: "SignInInitiation",
+    component: () => import("../views/admin/SignInInitiation.vue"),
+    meta:{
+      title:"签到发起"
+    }
   },
   {
     path: "/adminInfo",
     name: "adminInfo",
     component: () => import("../views/admin/AdminInfo.vue"),
+    meta:{
+      title:"管理员主页"
+    }
   },
   {
     path: "/userMain",
     name: "user",
-    component: () => import("../views/user/UserMain.vue"),
+    component: () => import("../views/user/CheckIn.vue"),
+    meta:{
+      title:"签到"
+    }
   },
   {
     path: "/codesign",
     name: "codesign",
     component: () => import("../views/user/CodeSign.vue"),
+    meta:{
+      title:"二维码签到"
+    }
   },
   {
     path:"/redirect",
-    name:"redirect",
-    component: () => import("../views/admin/AdminMain.vue"),
+    name:"redirect",  
+    component: () => import("../views/admin/SignInInitiation.vue"),
   }
 ];
 
 
 // dynamicRouter
-export const dynamicRouter = [
+export const dynamicRoutes  = [
   {
-    component: () => import("../views/user/UserMain.vue"),
+    component: () => import("../views/user/CheckIn.vue"),
     hidden: true,
     meta:{
-      title:"用户主页"
+      title:"签到"
     }
   }
 ]
@@ -57,8 +76,7 @@ export const dynamicRouter = [
 
 const router = createRouter({
   history: createWebHashHistory(import.meta.env.BASE_URL),
-  //process.env.BASE_URL是指从从环境进程中根据运行环境获取的api的base_url
-  routes,
+  routes: staticRoutes,
 });
 
 

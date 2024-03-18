@@ -10,7 +10,7 @@ watch(
   () => router,
   (newPath) => {
     path.value = newPath.currentRoute.value.fullPath.substring(1);
-    if (path.value === "adminMain") {
+    if (path.value === "SignInInitiation") {
       isActiveSign.value = true;
     }
     if (path.value === "adminInfo") {
@@ -22,7 +22,7 @@ watch(
 );
 //跳转签到发起页面
 const toMain = () => {
-  router.push({ path: "/adminMain" });
+  router.push({ path: "/SignInInitiation" });
 };
 //跳转个人页面
 const toUser = () => {

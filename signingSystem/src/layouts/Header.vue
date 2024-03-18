@@ -11,7 +11,7 @@ watch(
   () => router,
   (newPath) => {
     path.value = newPath.currentRoute.value.fullPath.substring(1);
-    if (path.value === "adminMain") {
+    if (path.value === "SignInInitiation") {
       headText.value = "签到发起";
     }
     if (path.value === "adminInfo") {
