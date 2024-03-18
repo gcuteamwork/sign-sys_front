@@ -31,23 +31,15 @@ const toUser = () => {
 </script>
 <template>
   <div class="footer-bg h-15 border-rd-2 flex justify-around flex-items-center">
-    <div
-      class="color-white flex flex-col flex-items-center justify-center h-14 w-14"
-      tabindex="1"
-      :class="{ 'icon-bg': isActiveSign }"
-      @click="toMain"
-    >
+    <div class="color-white flex flex-col flex-items-center justify-center h-14 w-14" tabindex="1"
+      :class="{ 'icon-bg': isActiveSign }" @click="toMain">
       <div class="w-8">
         <Promotion />
       </div>
-      <span class="font-size-2">签到发起</span>
+      <span class="font-size-2">签到</span>
     </div>
-    <div
-      class="color-white flex flex-col flex-items-center justify-center h-14 w-14"
-      tabindex="1"
-      :class="{ 'icon-bg': isActiveUser }"
-      @click="toUser"
-    >
+    <div class="color-white flex flex-col flex-items-center justify-center h-14 w-14" tabindex="1"
+      :class="{ 'icon-bg': isActiveUser }" @click="toUser">
       <div class="w-8">
         <House />
       </div>
@@ -63,6 +55,6 @@ const toUser = () => {
 .icon-bg {
   background-color: #fff;
   color: #2967cc;
-  border-radius: 50%;
+  border-radius: 30%;
 }
 </style>
