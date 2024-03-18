@@ -1,3 +1,33 @@
+<template>
+  <div class="common-layout">
+    <el-container class="common-layout">
+      <el-header style="padding: 0"><default-head /></el-header>
+      <el-main>
+        <seach-bar />
+        <sign-in-items @click="openSignDialog" />
+        <!-- @click="toUser" -->
+
+        <!-- <el-button @click="openSignDialog">main</el-button> -->
+        <el-button @click="handleScan"
+          ><el-icon><FullScreen /></el-icon
+        ></el-button>
+      </el-main>
+      <el-footer style="position: fixed; bottom: 26px; width: 100%"
+        ><default-foot
+      /></el-footer>
+    </el-container>
+  </div>
+  <signInfo
+    :open="isSignDialogOpen"
+    @close="isSignDialogOpen = false"
+  ></signInfo>
+  <ScanQRcode
+    v-if="data.isQrCodeShown"
+    @success="gotQrCode"
+    @closeScan="closeScan"
+  />
+</template>
+
 <script setup lang="ts">
 import DefaultHead from "../../layouts/Header.vue";
 import DefaultFoot from "../../layouts/Footer.vue";
@@ -57,33 +87,6 @@ const closeScan = () => {
   router.push({ path: "/codesign" });
 }; */
 </script>
-<template>
-  <div class="common-layout">
-    <el-container class="common-layout">
-      <el-header style="padding: 0"><default-head /></el-header>
-      <el-main>
-        <seach-bar />
-        <sign-in-items @click="openSignDialog" />
-        <!-- @click="toUser" -->
 
-        <!-- <el-button @click="openSignDialog">main</el-button> -->
-        <el-button @click="handleScan"
-          ><el-icon><FullScreen /></el-icon
-        ></el-button>
-      </el-main>
-      <el-footer style="position: fixed; bottom: 26px; width: 100%"
-        ><default-foot
-      /></el-footer>
-    </el-container>
-  </div>
-  <signInfo
-    :open="isSignDialogOpen"
-    @close="isSignDialogOpen = false"
-  ></signInfo>
-  <ScanQRcode
-    v-if="data.isQrCodeShown"
-    @success="gotQrCode"
-    @closeScan="closeScan"
-  />
-</template>
+
 <style scoped></style>
