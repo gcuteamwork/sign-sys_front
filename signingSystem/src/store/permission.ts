@@ -13,8 +13,8 @@ interface Route {
 
 function hasPermission(module: string[], route: Route): boolean {
     const title = route.meta?.title
-    console.log('正在检查权限:', title); 
-    return title ? module.includes(title) : true
+    console.log('正在检查权限:', title);
+    return title ? module.includes(title) : false
 }
 
 export function filterDynamicRoutes(routes: Route[], module: string[]): Route[] {
@@ -22,6 +22,7 @@ export function filterDynamicRoutes(routes: Route[], module: string[]): Route[] 
     const res: Route[] = []
     routes.forEach(route => {
         const tmp = { ...route }
+        console.log("hasPermisson:",hasPermission(module, tmp));
         if (hasPermission(module, tmp)) {
             if (tmp.children) {
                 tmp.children = filterDynamicRoutes(tmp.children, module)

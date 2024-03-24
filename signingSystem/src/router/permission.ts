@@ -44,7 +44,7 @@ export function setBeforeEach(router: any) {
                         // 如果有令牌，但是没有用户信息，证明用户是第一次登录，需要先设置用户信息
                         let accessRoutes: any[] = []
                         // 获取用户拥有的权限模块数组，从接口获取
-                        const {module} = await useStore.getUserInfo();
+                        const { module } = await useStore.getUserInfo();
                         console.log('用户模块:', module); 
 
                         accessRoutes = permissionStore.generateRoutes(module)

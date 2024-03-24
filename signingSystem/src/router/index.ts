@@ -22,14 +22,14 @@ export const staticRoutes: RouteRecordRaw[] = [
       title:"注册"
     }
   },
-  {
-    path: "/SignInInitiation",
-    name: "SignInInitiation",
-    component: () => import("../views/admin/SignInInitiation.vue"),
-    meta:{
-      title:"签到发起"
-    }
-  },
+  // {
+  //   path: "/SignInInitiation",
+  //   name: "SignInInitiation",
+  //   component: () => import("../views/admin/SignInInitiation.vue"),
+  //   meta:{
+  //     title:"签到发起"
+  //   }
+  // },
   {
     path: "/adminInfo",
     name: "adminInfo",
@@ -38,14 +38,14 @@ export const staticRoutes: RouteRecordRaw[] = [
       title:"管理员主页"
     }
   },
-  {
-    path: "/CheckIn",
-    name: "CheckIn",
-    component: () => import("../views/user/CheckIn.vue"),
-    meta:{
-      title:"签到"
-    }
-  },
+  // {
+  //   path: "/CheckIn",
+  //   name: "CheckIn",
+  //   component: () => import("../views/user/CheckIn.vue"),
+  //   meta:{
+  //     title:"签到"
+  //   }
+  // },
   {
     path: "/codesign",
     name: "codesign",
@@ -65,10 +65,12 @@ export const staticRoutes: RouteRecordRaw[] = [
 // dynamicRouter
 export const dynamicRoutes  = [
   {
+    path: "/CheckIn",
+    name: "CheckIn",
     component: () => import("../views/user/CheckIn.vue"),
     hidden: true,
     meta:{
-      title:"签到"
+      title:"CheckIn"
     }
   },
   {
@@ -76,9 +78,10 @@ export const dynamicRoutes  = [
     name: "SignInInitiation",
     component: () => import("../views/admin/SignInInitiation.vue"),
     meta:{
-      title:"签到发起"
+      title:"SignInInitiation"
     }
   },
+
 ]
 
 
