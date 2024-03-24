@@ -1,0 +1,4 @@
+{
+    "permission": "admin",
+    "module": ["SignInInitiation", "CheckIn", "adminInfo"]
+}

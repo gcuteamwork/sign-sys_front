@@ -15,10 +15,12 @@ const whiteList: string[] = ["/login", "/register", "/userMain"];
 
 export function setBeforeEach(router: any) {
     router.beforeEach(async (to: RouteLocationNormalized, from: RouteLocationNormalized, next: NavigationGuardNext) => {
+        console.log('正在路由到:', to.path); 
         document.title = to.meta.title as string;
 
         //获取token
         const hasToken: string | null = getToken();
+        console.log('token:', hasToken); 
         const useStore = useUserStore();
         const permissionStore = usePermissionStore();
 
@@ -32,6 +34,7 @@ export function setBeforeEach(router: any) {
                 //如果已经有令牌的用户请求的不是登录页，是其他页面
                 //就从store里拿到用户的信息，这里也证明用户不是第一次登录了
                 const isGetUserInfo: boolean = permissionStore.isGetUserInfo;
+                console.log('用户信息已检索:', isGetUserInfo); 
 
                 //如果用户信息存在，就直接跳转
                 if(isGetUserInfo){
@@ -42,22 +45,26 @@ export function setBeforeEach(router: any) {
                         let accessRoutes: any[] = []
                         // 获取用户拥有的权限模块数组，从接口获取
                         const {module} = await useStore.getUserInfo();
+                        console.log('用户模块:', module); 
 
                         accessRoutes = permissionStore.generateRoutes(module)
                         // 动态添加路由
                         accessRoutes.forEach((route: any) => {
                             router.addRoute(route);
                         });
+                        console.log('访问路由:', accessRoutes); 
                         // 把动态路由和静态路由结合后放到store里面，方便首页或者sidebar做菜单的显示隐藏
                         permissionStore.M_ROUTES(accessRoutes)
+                        console.log('路由:', permissionStore.routes);
                         //成功拿到用户信息
                         permissionStore.M_IS_GET_USER_INFO(true)
+                        console.log('用户信息已检索:', permissionStore.isGetUserInfo);
                         
                         //hack方法 确保addRoutes完成
                         //设置replace: true，这样导航就不会留下历史记录
                         next({ ...to, replace: true })
                     }catch(error){
-                        console.log("error: ",error);
+                        console.log("错误: ",error); 
                         //如果出错，就删除token，重新登录
                         await useStore.resetState();
                         next(`/login?redirect=${to.path}`);

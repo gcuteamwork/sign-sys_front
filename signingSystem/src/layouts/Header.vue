@@ -22,6 +22,10 @@ watch(
       headText.value = "二维码签到";
       IfPlus.value = false;
     }
+    if (path.value === "CheckIn") {
+      headText.value = "签到";
+      IfPlus.value = false;
+    }
   },
   { immediate: true }
   //在选项参数中指定 immediate: true 将立即以表达式的当前值触发回调：
@@ -36,18 +40,11 @@ const openSignDialog = () => {
 <template>
   <div class="head-bg position-relative text-center">
     <span class="color-white font-size-5 line-height-14">{{ headText }}</span>
-    <div
-      class="position-absolute right-6 top-3 w-8 color-white"
-      @click="openSignDialog()"
-    >
+    <div class="position-absolute right-6 top-3 w-8 color-white" @click="openSignDialog()">
       <Plus v-if="IfPlus" />
     </div>
   </div>
-  <sign
-    :open="isEditSignDialogOpen"
-    @close="isEditSignDialogOpen = false"
-    mode="add"
-  />
+  <sign :open="isEditSignDialogOpen" @close="isEditSignDialogOpen = false" mode="add" />
 </template>
 <style scoped>
 .head-bg {

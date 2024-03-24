@@ -36,7 +36,7 @@ const toUser = () => {
       <div class="w-8">
         <Promotion />
       </div>
-      <span class="font-size-2">签到</span>
+      <span class="font-size-2">签到发起</span>
     </div>
     <div class="color-white flex flex-col flex-items-center justify-center h-14 w-14" tabindex="1"
       :class="{ 'icon-bg': isActiveUser }" @click="toUser">
@@ -45,6 +45,13 @@ const toUser = () => {
       </div>
       <span class="font-size-2">个人</span>
     </div>
+    <!-- <div class="color-white flex flex-col flex-items-center justify-center h-14 w-14" tabindex="1"
+      :class="{ 'icon-bg': isActiveUser }" @click="toUser">
+      <div class="w-8">
+        <House />
+      </div>
+      <span class="font-size-2">个人</span>
+    </div> -->
   </div>
 </template>
 <style scoped>

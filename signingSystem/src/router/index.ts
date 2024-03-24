@@ -1,5 +1,5 @@
 import { createRouter, createWebHashHistory, RouteRecordRaw } from "vue-router";
-
+import { setBeforeEach } from "./permission";
 
 export const staticRoutes: RouteRecordRaw[] = [
   {
@@ -39,8 +39,8 @@ export const staticRoutes: RouteRecordRaw[] = [
     }
   },
   {
-    path: "/userMain",
-    name: "user",
+    path: "/CheckIn",
+    name: "CheckIn",
     component: () => import("../views/user/CheckIn.vue"),
     meta:{
       title:"签到"
@@ -70,7 +70,15 @@ export const dynamicRoutes  = [
     meta:{
       title:"签到"
     }
-  }
+  },
+  {
+    path: "/SignInInitiation",
+    name: "SignInInitiation",
+    component: () => import("../views/admin/SignInInitiation.vue"),
+    meta:{
+      title:"签到发起"
+    }
+  },
 ]
 
 
@@ -79,5 +87,6 @@ const router = createRouter({
   routes: staticRoutes,
 });
 
+setBeforeEach(router);
 
 export default router;

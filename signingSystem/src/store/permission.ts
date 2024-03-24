@@ -13,10 +13,12 @@ interface Route {
 
 function hasPermission(module: string[], route: Route): boolean {
     const title = route.meta?.title
+    console.log('正在检查权限:', title); 
     return title ? module.includes(title) : true
 }
 
 export function filterDynamicRoutes(routes: Route[], module: string[]): Route[] {
+    console.log('正在过滤模块的路由:', module); 
     const res: Route[] = []
     routes.forEach(route => {
         const tmp = { ...route }
@@ -27,7 +29,7 @@ export function filterDynamicRoutes(routes: Route[], module: string[]): Route[] 
             res.push(tmp)
         }
     })
-    return res
+    return res;
 }
 
 export const usePermissionStore = defineStore('permission', {
@@ -48,6 +50,7 @@ export const usePermissionStore = defineStore('permission', {
             this.isGetUserInfo = data
         },
         generateRoutes(module: string[]) {
+            console.log('正在生成模块的路由：', module); 
             return filterDynamicRoutes(dynamicRoutes, module)
         },
     },

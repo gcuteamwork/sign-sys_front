@@ -7,20 +7,16 @@ const useUserStore = defineStore("app", () => {
     const pathName = ref("");
 
     const getUserInfo = async () => {
-        // 这里可以添加获取用户信息的逻辑，例如从 API 获取数据
-        // 以下是一个示例
-        const response = await fetch("/api/user", {
-            headers: {
-                "Authorization": `Bearer ${access_token.value}`
-            }
-        });
-        const data = await response.json();
-        permission.value = data.permission;
-        return { module: data.module }; // 返回一个包含 module 属性的对象
-    };
+      //  JSON 内容就是用户的权限和模块信息
+      const response = await fetch("src/api/user.json");
+      const data = await response.json();
+      console.log('Response:', data); // 打印响应内容
+      permission.value = data.permission;
+      return { module: data.module };
+  };
 
     const resetState = () => {
-        // 这里可以添加重置状态的逻辑
+        // 重置状态的逻辑
         access_token.value = null;
         permission.value = null;
         pathName.value = "";
