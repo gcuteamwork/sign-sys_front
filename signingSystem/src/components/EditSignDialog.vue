@@ -92,7 +92,7 @@ const submitForm = () => {
 }
 </script>
 <template>
-    <el-dialog v-model="open" :before-close="handleClose" style="background-color: #f0f1f2;width: 285px;" class="dialog-title">
+    <el-dialog v-model="open" :before-close="handleClose" style="background-color: #f0f1f2;width: 285px;border-radius: 10px;" class="dialog-title">
         <template #header>
             <span class="el-dialog__title">
                 <p>编辑签到</p>

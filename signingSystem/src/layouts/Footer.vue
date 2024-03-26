@@ -64,24 +64,18 @@ const toUser = () => {
     <div v-if="hasCheckInRoute" class="color-white flex flex-col flex-items-center justify-center h-14 w-14"
       tabindex="2" :class="{ 'icon-bg': isActiveCheckIn }" @click="toCheckIn">
       <div class="w-8">
-        <Promotion />
+
+        <HomeFilled />
       </div>
       <span class="font-size-2">签到</span>
     </div>
     <div v-if="hasUserRoute" class="color-white flex flex-col flex-items-center justify-center h-14 w-14" tabindex="3"
       :class="{ 'icon-bg': isActiveUser }" @click="toUser">
       <div class="w-8">
-        <House />
+        <Avatar />
       </div>
       <span class="font-size-2">个人</span>
     </div>
-    <!-- <div class="color-white flex flex-col flex-items-center justify-center h-14 w-14" tabindex="1"
-      :class="{ 'icon-bg': isActiveUser }" @click="toUser">
-      <div class="w-8">
-        <House />
-      </div>
-      <span class="font-size-2">个人</span>
-    </div> -->
   </div>
 </template>
 <style scoped>
@@ -93,5 +87,6 @@ const toUser = () => {
   background-color: #fff;
   color: #2967cc;
   border-radius: 30%;
+  
 }
 </style>

@@ -6,30 +6,17 @@
         <div class="line"></div>
         <div class="angle"></div>
       </div>
-      <canvas
-        id="canvas"
-        ref="canvas"
-        class="canvas"
-        :width="canvasWidth"
-        :height="canvasHeight"
-      ></canvas>
+      <canvas id="canvas" ref="canvas" class="canvas" :width="canvasWidth" :height="canvasHeight"></canvas>
     </div>
     <!--  开发的 时候为了方便，加了这个关闭按钮，正常项目可以去掉 -->
-    <el-button
-      style="
+    <el-button style="
         position: fixed;
         bottom: 180px;
         z-index: 1000;
         width: 300px;
         font-size: 20px;
         padding: 20px;
-      "
-      @click="closeScan"
-      type="primary"
-      plain
-      size="large"
-      >退出二维码签到</el-button
-    >
+      " @click="closeScan" type="primary" plain size="large">退出二维码签到</el-button>
   </div>
 </template>
 
@@ -70,7 +57,7 @@ onUnmounted(() => {
 const emit = defineEmits<{ closeScan: []; success: any }>();
 const closeScan = () => {
   emit("closeScan");
-  router.push({ path: "/adminMain" });
+  router.go(0);
 };
 const openScan = () => {
   let width = canvasHeight.value;
@@ -196,20 +183,16 @@ page {
   right: 0;
   background-color: rgba(0, 0, 0, 0.1);
 
-  background-image: linear-gradient(
-      0deg,
+  background-image: linear-gradient(0deg,
       transparent 24%,
       rgba(110, 234, 251, 0.1) 25%,
       rgba(110, 234, 251, 0.1) 26%,
-      transparent 27%
-    ),
-    linear-gradient(
-      90deg,
+      transparent 27%),
+    linear-gradient(90deg,
       transparent 24%,
       rgba(110, 234, 251, 0.1) 25%,
       rgba(110, 234, 251, 0.1) 26%,
-      transparent 27%
-    );
+      transparent 27%);
   background-size: 3rem 3rem;
   background-position: -1rem -1rem;
   z-index: 10;
@@ -229,11 +212,9 @@ page {
 .line {
   height: calc(100% - 2px);
   width: 100%;
-  background: linear-gradient(
-    180deg,
-    rgba(110, 234, 251, 0.1) 43%,
-    #2967cc 211%
-  );
+  background: linear-gradient(180deg,
+      rgba(110, 234, 251, 0.1) 43%,
+      #2967cc 211%);
   border-bottom: 3px solid #2967cc;
   transform: translateY(-100%);
   animation: radar-beam 2s infinite alternate;

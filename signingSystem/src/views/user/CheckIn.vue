@@ -4,13 +4,10 @@
             <el-header style="padding: 0"><default-head /></el-header>
             <el-main>
                 <seach-bar />
-                <sign-in-items @click="openSignDialog" />
+                <sign-in-items @click="handleScan" />
                 <!-- @click="toUser" -->
 
                 <!-- <el-button @click="openSignDialog">main</el-button> -->
-                <el-button @click="handleScan"><el-icon>
-                        <FullScreen />
-                    </el-icon></el-button>
             </el-main>
             <el-footer style="position: fixed; bottom: 26px; width: 100%"><default-foot /></el-footer>
         </el-container>

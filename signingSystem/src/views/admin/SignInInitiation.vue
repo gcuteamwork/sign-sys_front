@@ -8,9 +8,10 @@
         <!-- @click="toUser" -->
 
         <!-- <el-button @click="openSignDialog">main</el-button> -->
-        <el-button @click="handleScan"
+        <!-- <el-button @click="handleScan"
           ><el-icon><FullScreen /></el-icon
-        ></el-button>
+        ></el-button> -->
+        
       </el-main>
       <el-footer style="position: fixed; bottom: 26px; width: 100%"
         ><default-foot

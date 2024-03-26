@@ -67,12 +67,8 @@ const closeDialog = () => {
 };
 </script>
 <template>
-  <el-dialog
-    v-model="open"
-    :before-close="closeDialog"
-    style="background-color: #f0f1f2; width: 90%; height: 70%"
-    class="dialog-title"
-  >
+  <el-dialog v-model="open" :before-close="closeDialog"
+    style="background-color: #f0f1f2; width: 90%; height: 70%;border-radius: 10px;" class="dialog-title">
     <template #header>
       <span class="el-dialog__title">
         <p>签到情况</p>
@@ -82,30 +78,24 @@ const closeDialog = () => {
       <el-form-item prop="title">
         <div class="w-full bg-white font-700 color-black h-10 b-rd-t-3 p-t-3">
           <span class="ml-2">签到类型</span>&nbsp:&nbsp&nbsp<span>{{
-            signType
-          }}</span>
+    signType
+  }}</span>
         </div>
       </el-form-item>
       <el-form-item prop="title">
         <div class="w-full bg-white font-700 color-black h-11 p-t-2">
-          <span class="ml-2"
-            >签到人数&nbsp:
+          <span class="ml-2">签到人数&nbsp:
             <span>&nbsp{{ 11 }}</span>
             <br />
             <span class="ml-2">未签到人数&nbsp:</span>
             <span class="color-red">&nbsp{{ 1 }}</span>
             <el-dropdown trigger="click" class="ml-5">
               <el-button class="w-30" style="height: 20px">
-                <span class="font-size-3">查看未签到人员</span
-                ><el-icon class="el-icon--right"><arrow-down /></el-icon>
+                <span class="font-size-3">查看未签到人员</span><el-icon class="el-icon--right"><arrow-down /></el-icon>
               </el-button>
               <template #dropdown>
                 <el-dropdown-menu>
-                  <el-dropdown-item
-                    v-for="items in unAttended"
-                    class="w-32"
-                    style="height: 15px; font-size: 10px"
-                  >
+                  <el-dropdown-item v-for="items in unAttended" class="w-32" style="height: 15px; font-size: 10px">
                     {{ items.department_id }}&nbsp:&nbsp{{ items.name }}
                   </el-dropdown-item>
                 </el-dropdown-menu>
@@ -117,11 +107,7 @@ const closeDialog = () => {
       <el-form-item prop="title">
         <div class="w-full bg-white font-700 color-black h-10 p-t-3">
           <span class="ml-2">剩余时间</span>&nbsp:&nbsp&nbsp<span>
-            <CountDownVue
-              :advanced="advanced"
-              :signTime="isCountDown"
-              @close="closeDialog"
-            />
+            <CountDownVue :advanced="advanced" :signTime="isCountDown" @close="closeDialog" />
           </span>
         </div>
       </el-form-item>
@@ -147,6 +133,11 @@ const closeDialog = () => {
 <style lang="css">
 .el-form-item__content {
   line-height: 16px;
+}
+
+.el-dialog__header {
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
 }
 </style>
 ./UseCountDown.js
