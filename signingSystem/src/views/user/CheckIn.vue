@@ -4,15 +4,11 @@
             <el-header style="padding: 0"><default-head /></el-header>
             <el-main>
                 <seach-bar />
-                <sign-in-items @click="handleScan" />
-                <!-- @click="toUser" -->
-
-                <!-- <el-button @click="openSignDialog">main</el-button> -->
+                <sign-in-items :activities="activities" @click="handleScan" />
             </el-main>
             <el-footer style="position: fixed; bottom: 26px; width: 100%"><default-foot /></el-footer>
         </el-container>
     </div>
-    <signInfo :open="isSignDialogOpen" @close="isSignDialogOpen = false"></signInfo>
     <ScanQRcode v-if="data.isQrCodeShown" @success="gotQrCode" @closeScan="closeScan" />
 </template>
 
@@ -21,17 +17,12 @@ import DefaultHead from "../../layouts/Header.vue";
 import DefaultFoot from "../../layouts/Footer.vue";
 import SignInItems from "../../components/SignInItems.vue";
 import SeachBar from "../../components/SeachBar.vue";
-import signInfo from "../../components/SignInfoDialog.vue";
 import ScanQRcode from "../../components/ScanQRcode.vue";
-import { ref, reactive } from "vue";
+import { ref, reactive, onMounted } from "vue";
 import { ElMessage } from "element-plus";
 /* import { useRouter } from "vue-router";
 let router = useRouter(); */
 
-const isSignDialogOpen = ref<boolean>(false);
-const openSignDialog = () => {
-    isSignDialogOpen.value = true;
-};
 const data = reactive({
     qrCode: "",
     isQrCodeShown: false,
@@ -74,6 +65,26 @@ const closeScan = () => {
 /* const toUser = () => {
   router.push({ path: "/codesign" });
 }; */
+
+interface Activity {
+    signInType: string;
+    class: string;
+    status: string;
+    date: string;
+}
+
+// 初始化数据
+const activities = ref<Activity[]>([]);
+
+async function fetchData() {
+    const response = await fetch("src/api/CheckIn.json");
+    const data: Activity[] = await response.json();
+
+    activities.value = data;
+}
+
+onMounted(fetchData);
+
 </script>
 
 

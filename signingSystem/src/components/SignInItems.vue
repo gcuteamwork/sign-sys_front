@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { ref, onMounted, defineEmits } from "vue";
+import { defineProps, onMounted, defineEmits } from "vue";
 
 interface Activity {
   signInType: string;
@@ -8,24 +8,16 @@ interface Activity {
   date: string;
 }
 
-// 初始化数据
-const activities = ref<Activity[]>([]);
-
-async function fetchData() {
-  const response = await fetch("src/api/SignInItems.json");
-  const data: Activity[] = await response.json();
-
-  activities.value = data;
-}
-
-onMounted(fetchData);
+const props = defineProps({
+  activities: Array as () => Activity[],
+});
 
 const emits = defineEmits(['click']);
 </script>
 
 <template>
-  <div v-for="(activity, index) in activities" :key="index" class="block flex h-12dvh w-95% b-rd-3 m-a m-t-4 bg-white"
-    @click="$emit('click', activity)">
+  <div v-for="(activity, index) in props.activities" :key="index"
+    class="block flex h-12dvh w-95% b-rd-3 m-a m-t-4 bg-white" @click="$emit('click', activity)">
     <div class="ways h-80% m-3 b-rd-4 text-center font-size-6 text-white flex flex-justify-center flex-col">
       {{ activity.signInType }}<br />签到
     </div>
