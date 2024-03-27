@@ -1,67 +1,45 @@
 <script setup lang="ts">
-import { ref } from "vue";
-//左侧签到类型
-const signInText = ref("");
-const backendResponse = "位置"; //后端返回类型
+import { ref, onMounted, defineEmits } from "vue";
 
-if (backendResponse === "位置") {
-  signInText.value = "位置";
-} else if (backendResponse === "扫码") {
-  signInText.value = "扫码";
+interface Activity {
+  signInType: string;
+  class: string;
+  status: string;
+  date: string;
 }
 
-//课程
-const classChoose = ref("");
-const backendResponse2 = "形势与政策"; //后端返回课程
+// 初始化数据
+const activities = ref<Activity[]>([]);
 
-if (backendResponse2 === "形势与政策") {
-  classChoose.value = "形势与政策";
-} else {
-  classChoose.value = backendResponse2;
+async function fetchData() {
+  const response = await fetch("src/api/SignInItems.json");
+  const data: Activity[] = await response.json();
+
+  activities.value = data;
 }
 
-//状态
-const status = ref("");
-const backendResponse3 = "正在进行"; //后端返回状态
+onMounted(fetchData);
 
-if (backendResponse3 === "正在进行") {
-  status.value = "正在进行";
-} else if (backendResponse3 === "已完成") {
-  status.value = "已完成";
-}
-
-//日期
-const date = ref("");
-const backendResponse4 = "10-10 10:10"; //后端返回日期
-
-if (backendResponse4 === "10-10 10:10") {
-  date.value = "10-10 10:10";
-} else {
-  date.value = backendResponse4;
-}
+const emits = defineEmits(['click']);
 </script>
 
 <template>
-  <div class="block flex h-12dvh w-95% b-rd-3 m-a m-t-4 bg-white">
-    <div
-      class="ways h-85% m-3 b-rd-4 text-center font-size-6 text-white flex flex-justify-center flex-col"
-    >
-      {{ signInText }}<br />签到
+  <div v-for="(activity, index) in activities" :key="index" class="block flex h-12dvh w-95% b-rd-3 m-a m-t-4 bg-white"
+    @click="$emit('click', activity)">
+    <div class="ways h-80% m-3 b-rd-4 text-center font-size-6 text-white flex flex-justify-center flex-col">
+      {{ activity.signInType }}<br />签到
     </div>
     <div class="flex flex-col flex-justify-center">
-      <div class="class text-size-5 fw-bold m-1">{{ classChoose }}</div>
-      <div
-        class="status text-size-4 fw-bold m-1"
-        :class="{
-          'text-green-500': status === '正在进行',
-          'text-red-500': status === '已完成',
-        }"
-      >
-        {{ status }}
+      <div class="class text-size-5 fw-bold m-1">{{ activity.class }}</div>
+      <div class="status text-size-4 fw-bold m-1" :class="{
+    'text-green-500': activity.status === '正在进行',
+    'text-red-500': activity.status === '已完成',
+  }">
+        {{ activity.status }}
       </div>
     </div>
     <div class="date text-size-4 m-t-6 m-l-a m-r-3">
-      {{ date }}
+      {{ activity.date }}
     </div>
   </div>
 </template>
@@ -70,10 +48,12 @@ if (backendResponse4 === "10-10 10:10") {
 .block {
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
 }
+
 .ways {
   background-color: #2967cc;
   aspect-ratio: 1 / 1;
 }
+
 .date {
   color: rgb(105, 105, 105);
 }
