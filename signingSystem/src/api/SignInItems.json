@@ -7,8 +7,14 @@
     },
     {
       "signInType": "位置",
-      "class": "形势与政策",
+      "class": "习概论",
       "status": "正在进行",
-      "date": "10-10 11:10"
-    }
+      "date": "9-10 11:10"
+    },
+    {
+        "signInType": "位置",
+        "class": "高数II",
+        "status": "已完成",
+        "date": "10-11 11:10"
+      }
   ]
