@@ -12,9 +12,9 @@
       "date": "9-10 11:10"
     },
     {
-        "signInType": "位置",
-        "class": "高数II",
-        "status": "已完成",
-        "date": "10-11 11:10"
-      }
+      "signInType": "位置",
+      "class": "高数II",
+      "status": "已完成",
+      "date": "10-11 11:10"
+    }
   ]

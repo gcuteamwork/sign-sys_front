@@ -1,11 +1,13 @@
 <script setup lang="ts">
-import { reactive, ref, watch } from "vue";
+import { reactive, ref, watch, onMounted } from "vue";
 import { ElMessageBox, ElMessage } from "element-plus";
 import CountDownVue from "./CountDown.vue";
 import QRCode from "./QRCode.vue";
+
 interface DialogProps {
   open: boolean;
 }
+
 const props = defineProps<DialogProps>();
 const open = ref<boolean>(false);
 watch(
@@ -22,24 +24,29 @@ const formRef = ref();
 
 const emit = defineEmits<{ close: []; complete: [] }>();
 
-const signType = ref<string>("二维码签到"); //获取签到类型
-//是否显示二维码签到
-const isShowQRcode = ref<boolean>(false);
-if (signType.value === "二维码签到") {
-  isShowQRcode.value = true;
-}
-//获取未签到人员信息
-const unAttended = reactive([
-  {
-    department_id: "网站运维部",
-    name: "某某某",
-  },
-  {
-    department_id: "信息化运维部",
-    name: "某某某",
-  },
-]);
-const isCountDown = ref<number>(0.1); //获取签到时间
+const signType = ref<string>(""); //获取签到类型
+const isShowQRcode = ref<boolean>(false); //是否显示二维码签到
+const attended = ref<number>(0); //获取已签到人数
+const unAttended = ref<Array<{ department_id: string; name: string }>>([]); //获取未签到人员信息
+const isCountDown = ref<number>(0); //获取签到时间
+
+// const advanced = ref<string>("");
+
+// Fetch data from API
+const fetchData = async () => {
+  const response = await fetch('src/api/SignInfoDialog.json');
+  if (!response.ok) {
+    throw new Error(`HTTP error! status: ${response.status}`);
+  }
+  const data = await response.json();
+  signType.value = data.signType;
+  isShowQRcode.value = data.signType === "二维码签到";
+  attended.value = data.attended;
+  unAttended.value = data.unAttended;
+  isCountDown.value = data.isCountDown;
+};
+
+onMounted(fetchData);
 
 const advanced = ref<string>("");
 const handleClose = () => {
@@ -66,6 +73,7 @@ const closeDialog = () => {
   emit("close");
 };
 </script>
+
 <template>
   <el-dialog v-model="open" :before-close="closeDialog"
     style="background-color: #f0f1f2; width: 90%; height: 70%;border-radius: 10px;" class="dialog-title">
@@ -84,11 +92,11 @@ const closeDialog = () => {
       </el-form-item>
       <el-form-item prop="title">
         <div class="w-full bg-white font-700 color-black h-11 p-t-2">
-          <span class="ml-2">签到人数&nbsp:
-            <span>&nbsp{{ 11 }}</span>
+          <span class="ml-2">已签到人数&nbsp:
+            <span>&nbsp{{ attended }}</span>
             <br />
             <span class="ml-2">未签到人数&nbsp:</span>
-            <span class="color-red">&nbsp{{ 1 }}</span>
+            <span class="color-red">&nbsp&nbsp{{ unAttended.length }}</span>
             <el-dropdown trigger="click" class="ml-5">
               <el-button class="w-30" style="height: 20px">
                 <span class="font-size-3">查看未签到人员</span><el-icon class="el-icon--right"><arrow-down /></el-icon>

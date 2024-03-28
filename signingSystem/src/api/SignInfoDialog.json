@@ -1,0 +1,19 @@
+{
+    "signType": "二维码签到",
+    "attended": 13,
+    "unAttended": [
+      {
+        "department_id": "网站运维部",
+        "name": "某某某"
+      },
+      {
+        "department_id": "信息化运维部",
+        "name": "某某某"
+      },
+      {
+        "department_id": "信息化运维部",
+        "name": "某某某"
+      }
+    ],
+    "isCountDown": 10
+  }
